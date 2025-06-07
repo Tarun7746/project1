@@ -21,26 +21,37 @@ export default function Header() {
 
   const navigationItems = [
     {
-      href: "/about",
-      label: "About Us",
+      href: "/Home",
+      label: "Home",
       ariaLabel: "Learn more about our company",
     },
-    { href: "/pricing", label: "Pricing", ariaLabel: "View our pricing plans" },
+
     {
       href: "/blogs",
-      label: "Resources",
+      label: "Projects",
+      ariaLabel: "Access our resources and documentation",
+    },
+
+    {
+      href: "/blogs",
+      label: "About",
+      ariaLabel: "Access our resources and documentation",
+    },
+    {
+      href: "/blogs",
+      label: "Services",
       ariaLabel: "Access our resources and documentation",
     },
   ];
 
   return (
     <header
-      className={`fixed w-[100%] top-0 z-50 transition-all duration-300 `}
+      className={`fixed w-[100%] top-4 z-50 transition-all duration-300 `}
       role="banner"
       aria-label="Main navigation"
     >
-      <div className="container mx-auto lg: max-w-[800px]">
-        <div className="relative flex mx-auto items-center justify-between px-3 py-4 ">
+      <div className="container header_custnmStyle mx-auto lg: max-w-[900px]">
+        <div className="relative flex mx-auto items-center justify-between px-3 py-2 ">
           {/* Logo */}
           <div
             onClick={() => {
@@ -72,7 +83,7 @@ export default function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="relative text-[var(--light-black)]  text-[15px] font-medium transition-all duration-300 primary_color_hover group"
+                    className="relative text-[var(--white)]  text-[16px] font-medium transition-all duration-300 primary_color_hover group"
                     aria-label={item.ariaLabel}
                   >
                     {item.label}
@@ -84,11 +95,10 @@ export default function Header() {
 
             <Link
               href="https://app.wowreviews.co/Sign-In"
-              className="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-[var(--primary-color)] rounded-full transition-all duration-300  transform hover:-translate-y-0.5 focus:outline-none"
+              className="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-[var(--black)] bg-[var(--white)] rounded-full transition-all duration-300 hover:bg-[var(--primary-color)] hover:text-[var(--white)]  transform hover:-translate-y-0.5 focus:outline-none"
               aria-label="Start your free trial today"
             >
               <span className="relative z-10">Start Free Trial</span>
-              <div className="absolute inset-0 rounded-full bg-[var(--primary-color)] opacity-0 transition-opacity duration-300 hover:opacity-100"></div>
             </Link>
           </nav>
 

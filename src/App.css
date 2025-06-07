@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap");
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-color: #ec5e3a;
-  --primary-hover: #eb4b23;
+  --primary-color: #dc2626;
+  --primary-hover: #b91c1c;
   --red: #e30a0a;
   --white: #fff;
   --black: #000000;
@@ -10,6 +12,8 @@
   --grey-text: #6b6b6b;
   --light-grey: #707070;
   --light-footer-grey: #d1d5dc;
+  --syne_font_family: "Syne", "Syne Placeholder", sans-serif;
+  --monseret_font: "Montserrat", sans-serif;
 }
 
 .primary_color_hover:hover {
@@ -21,4 +25,11 @@ button {
 }
 body {
   background-color: var(--black);
+  font-family: var(--syne_font_family);
+}
+.header_custnmStyle {
+  backdrop-filter: blur(9px);
+  background-color: rgba(13, 13, 13, 0.2);
+  border-radius: 44px;
+  opacity: 1;
 }
