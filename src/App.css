@@ -27,3 +27,9 @@ body {
   background-color: var(--black);
   font-family: var(--syne_font_family);
 }
+.custom-scrollbar-hidden {
+  scrollbar-width: none;
+}
+.custom-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
