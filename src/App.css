@@ -8,7 +8,7 @@
   --red: #e30a0a;
   --white: #fff;
   --black: #000000;
-  --light-black: #212121;
+  --light-black: #0d0d0d;
   --grey-text: #6b6b6b;
   --light-grey: #707070;
   --light-footer-grey: #d1d5dc;
@@ -26,10 +26,4 @@ button {
 body {
   background-color: var(--black);
   font-family: var(--syne_font_family);
-}
-.header_custnmStyle {
-  backdrop-filter: blur(9px);
-  background-color: rgba(13, 13, 13, 0.2);
-  border-radius: 44px;
-  opacity: 1;
 }

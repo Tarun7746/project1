@@ -3,201 +3,117 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../../Assets/logoImg.svg";
 import gsap from "gsap";
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const logoRef = useRef(null);
 
-  // Close menu when clicking outside
+  const navigationItems = [
+    { to: "/Home", label: "Home" },
+    { to: "/blogs", label: "Projects" },
+    { to: "/blogs", label: "About" },
+    { to: "/blogs", label: "Services" },
+  ];
+
   useEffect(() => {
-    const handleClickOutside = () => {
+    gsap.fromTo(
+      logoRef.current,
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" }
+    );
+  }, []);
+
+  useEffect(() => {
+    const closeMenu = () => {
       if (isMenuOpen) setIsMenuOpen(false);
     };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    document.addEventListener("click", closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
   }, [isMenuOpen]);
 
   const toggleMenu = (e) => {
     e.stopPropagation();
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
 
-  const navigationItems = [
-    {
-      href: "/Home",
-      label: "Home",
-      ariaLabel: "Learn more about our company",
-    },
-
-    {
-      href: "/blogs",
-      label: "Projects",
-      ariaLabel: "Access our resources and documentation",
-    },
-
-    {
-      href: "/blogs",
-      label: "About",
-      ariaLabel: "Access our resources and documentation",
-    },
-    {
-      href: "/blogs",
-      label: "Services",
-      ariaLabel: "Access our resources and documentation",
-    },
-  ];
-  const logoRef = useRef(null);
-  useEffect(() => {
-    // Simple fade-in from left animation
-    gsap.fromTo(
-      logoRef.current,
-      {
-        opacity: 0,
-        x: -50,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 1.2,
-        ease: "power3.out",
-      }
-    );
-  }, []);
-
   return (
-    <header
-      className={`fixed w-[100%] top-4 z-50 transition-all duration-300 `}
-      role="banner"
-      aria-label="Main navigation"
-    >
-      <div className="container header_custnmStyle mx-auto lg: max-w-[900px]">
-        <div className="relative flex mx-auto items-center justify-between px-3 py-2 ">
-          {/* Logo */}
-          <div
-            onClick={() => {
-              window.location.href = "/";
-            }}
-            className="flex items-center space-x-2 group cursor-pointer"
-            aria-label="WOW - Go to homepage"
-          >
-            <div
-              ref={logoRef}
-              className="relative overflow-hidden rounded-lg w-[90px] h-[50px]"
-            >
-              <img
-                src={logo}
-                alt="WOW logo"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+    <header className="fixed top-4 w-full z-50">
+      <section className="container mx-auto lg:max-w-[900px] backdrop-blur-lg bg-[rgba(13,13,13,0.2)] rounded-[44px]">
+        <nav className="flex justify-between items-center px-3 py-2">
+          <Link to="/" className="w-[90px] h-[50px]" ref={logoRef}>
+            <img
+              src={logo}
+              alt="WOW Reviews logo"
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </Link>
 
-          {/* Desktop Navigation */}
-          <nav
-            className="hidden md:flex items-center space-x-8"
-            role="navigation"
-            aria-label="Primary navigation"
-          >
-            <ul className="flex items-center space-x-8">
-              {navigationItems.map((item, index) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="relative text-[var(--white)]  text-[16px] font-medium transition-all duration-300 primary_color_hover group"
-                    aria-label={item.ariaLabel}
-                  >
-                    {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--primary-color)] transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href="https://app.wowreviews.co/Sign-In"
-              className="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-[var(--black)] bg-[var(--white)] rounded-full transition-all duration-300 hover:bg-[var(--primary-color)] hover:text-[var(--white)]  transform hover:-translate-y-0.5 focus:outline-none"
-              aria-label="Start your free trial today"
-            >
-              <span className="relative z-10">Start Free Trial</span>
-            </Link>
-          </nav>
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex items-center space-x-8">
+            {navigationItems.map((item) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  className="text-white text-base font-medium relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--primary-color)] transition-all duration-300 group-hover:w-full" />
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                to="/trial"
+                className="px-6 py-2.5 text-sm bg-white text-black rounded-full hover:bg-[var(--primary-color)] hover:text-white transition"
+              >
+                Start Free Trial
+              </Link>
+            </li>
+          </ul>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden relative p-2 text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg transition-colors duration-200"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={
-              isMenuOpen ? "Close navigation menu" : "Open navigation menu"
-            }
-          >
-            <div className="relative w-6 h-6">
+          <button onClick={toggleMenu} className="md:hidden p-2">
+            <span className="relative w-6 h-6 block">
               <Menu
-                className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
-                  isMenuOpen ? "opacity-0 rotate-180" : "opacity-100 rotate-0"
+                className={`absolute text-[var(--white)] w-6 h-6 transition ${
+                  isMenuOpen ? "opacity-0 rotate-180" : "opacity-100"
                 }`}
               />
               <X
-                className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
-                  isMenuOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-180"
+                className={`absolute w-6 h-6 text-[var(--white)] transition ${
+                  isMenuOpen ? "opacity-100" : "opacity-0 -rotate-180"
                 }`}
               />
-            </div>
+            </span>
           </button>
+        </nav>
 
-          {/* Mobile Menu */}
-          <div
-            id="mobile-menu"
-            className={`absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-lg transition-all duration-300 md:hidden ${
-              isMenuOpen
-                ? "opacity-100 visible transform translate-y-0"
-                : "opacity-0 invisible transform -translate-y-4"
-            }`}
-            role="navigation"
-            aria-label="Mobile navigation"
-          >
-            <nav className="px-4 py-6 space-y-4">
-              {navigationItems.map((item, index) => (
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <ul className="md:hidden bg-white px-4 py-6 space-y-4 shadow-lg border-t">
+            {navigationItems.map((item) => (
+              <li key={item.to}>
                 <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`block py-3 px-4 text-gray-700 font-medium rounded-lg transition-all duration-300 hover:bg-blue-50 hover:text-blue-600 transform ${
-                    isMenuOpen
-                      ? "translate-x-0 opacity-100"
-                      : "translate-x-4 opacity-0"
-                  }`}
-                  style={{
-                    transitionDelay: isMenuOpen ? `${index * 50}ms` : "0ms",
-                  }}
+                  to={item.to}
                   onClick={() => setIsMenuOpen(false)}
-                  aria-label={item.ariaLabel}
+                  className="block py-3 px-4 text-gray-700 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition"
                 >
                   {item.label}
                 </Link>
-              ))}
-
-              <div className="pt-4 border-t border-gray-100">
-                <Link
-                  href="/trial"
-                  className={`block w-full py-3 px-4 text-center text-white font-semibold bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg transition-all duration-300 hover:from-blue-700 hover:to-purple-700 hover:shadow-lg transform ${
-                    isMenuOpen
-                      ? "translate-x-0 opacity-100"
-                      : "translate-x-4 opacity-0"
-                  }`}
-                  style={{
-                    transitionDelay: isMenuOpen
-                      ? `${navigationItems.length * 50}ms`
-                      : "0ms",
-                  }}
-                  onClick={() => setIsMenuOpen(false)}
-                  aria-label="Start your free trial today"
-                >
-                  Start Free Trial
-                </Link>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
+              </li>
+            ))}
+            <li className="pt-4 border-t">
+              <Link
+                to="/trial"
+                onClick={() => setIsMenuOpen(false)}
+                className="block text-center py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition"
+              >
+                Start Free Trial
+              </Link>
+            </li>
+          </ul>
+        )}
+      </section>
     </header>
   );
 }
