@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-
+import logo from "../../Assets/logoImg.svg";
+import gsap from "gsap";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -43,6 +44,23 @@ export default function Header() {
       ariaLabel: "Access our resources and documentation",
     },
   ];
+  const logoRef = useRef(null);
+  useEffect(() => {
+    // Simple fade-in from left animation
+    gsap.fromTo(
+      logoRef.current,
+      {
+        opacity: 0,
+        x: -50,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        ease: "power3.out",
+      }
+    );
+  }, []);
 
   return (
     <header
@@ -57,18 +75,18 @@ export default function Header() {
             onClick={() => {
               window.location.href = "/";
             }}
-            className="flex items-center space-x-2 group"
+            className="flex items-center space-x-2 group cursor-pointer"
             aria-label="WOW - Go to homepage"
           >
-            <div className="relative overflow-hidden rounded-lg">
-              {/* <Image
-                src={wowlogo || "/placeholder.svg"}
-                width={"auto"}
-                height={32}
-                alt="WOW company logo"
-                priority
-              /> */}
-              hos +
+            <div
+              ref={logoRef}
+              className="relative overflow-hidden rounded-lg w-[90px] h-[50px]"
+            >
+              <img
+                src={logo}
+                alt="WOW logo"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
