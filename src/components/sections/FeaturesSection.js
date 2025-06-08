@@ -140,12 +140,12 @@ const FeaturesSection = () => {
     <section>
       <section
         ref={sectionRef}
-        className="relative pt-12 z-20 bg-[var(--light-black)] flex flex-col h-[300vh] px-4"
+        className="relative pt-[3rem] z-20 bg-[var(--light-black)] flex flex-col h-[200vh] px-4"
       >
         <section ref={ref}></section>
         <section className="sticky top-[80px] h-[calc(100vh-80px)] flex flex-col lg:flex-row justify-center items-center lg:justify-between px-0  mx-auto z-[2]">
           <section
-            className="w-[500px] h-[500px] relative flex-shrink-0"
+            className="w-[500px] h-[500px] relative justify-between flex-shrink-0"
             aria-label="Feature images"
           >
             <div className="absolute top-0 left-0 z-0 transition-colors duration-300 ease-in-out">
@@ -153,10 +153,13 @@ const FeaturesSection = () => {
                 From Concept To Creation
               </p>
             </div>
+            <div className="transition-colors duration-300 ease-in-out">
+              <button type="button">Explore</button>
+            </div>
           </section>
           <aside
             ref={leftSideRef}
-            className="flex flex-col gap-[6rem] flex-1 max-w-[600px] h-[600px] overflow-y-auto pr-4 custom-scrollbar-hidden"
+            className="flex flex-col gap-[6rem] flex-1 max-w-[900px] h-[600px] overflow-y-auto pr-4 custom-scrollbar-hidden"
             aria-label="Feature details"
           >
             {rightSideCards.map((card, idx) => (
@@ -168,6 +171,8 @@ const FeaturesSection = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundBlendMode: "overlay",
+                  marginBottom:
+                    idx === rightSideCards.length - 1 ? "20rem" : undefined,
                 }}
               >
                 <div className="relative z-10">
