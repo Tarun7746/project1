@@ -148,8 +148,8 @@ const FeaturesSection = () => {
             className="w-[500px] h-[500px] relative justify-between flex-shrink-0"
             aria-label="Feature images"
           >
-            <div className="absolute top-0 left-0 z-0 transition-colors duration-300 ease-in-out">
-              <p className="text-[30px] text-[var(--white)] font-medium">
+            <div className="absolute top-0 left-[10px] z-0 transition-colors duration-300 ease-in-out">
+              <p className="text-[35px] text-[var(--white)] font-medium">
                 From Concept To Creation
               </p>
             </div>
@@ -172,7 +172,7 @@ const FeaturesSection = () => {
                   backgroundPosition: "center",
                   backgroundBlendMode: "overlay",
                   marginBottom:
-                    idx === rightSideCards.length - 1 ? "20rem" : undefined,
+                    idx === rightSideCards.length - 1 ? "22rem" : undefined,
                 }}
               >
                 <div className="relative z-10">

@@ -10,7 +10,7 @@ export default function ClientSection() {
     "https://framerusercontent.com/images/5ghcacUXSfLLdw6hJ3fy2AQOjOI.svg",
   ];
   return (
-    <section className="bg-[var(--light-black)] relative z-20 py-12 px-4 text-center overflow-hidden">
+    <section className="bg-[var(--light-black)] mt-[-20px] relative z-20 py-12 px-4 text-center overflow-hidden">
       <h2 className="text-white text-[40px] font-medium mb-8">
         Standing Tall with Our Clients
       </h2>
