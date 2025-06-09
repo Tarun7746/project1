@@ -171,8 +171,6 @@ const FeaturesSection = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundBlendMode: "overlay",
-                  marginBottom:
-                    idx === rightSideCards.length - 1 ? "22rem" : undefined,
                 }}
               >
                 <div className="relative z-10">
