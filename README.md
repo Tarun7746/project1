@@ -37,9 +37,4 @@ It's got **style, movement, performance, and class** — all bundled into a mode
 - **Responsive Layouts** using Flexbox & Grid  
 - **Advance Component Structure**
 
----
-## 🧑‍💻 Developed By
-
-👑 **Tarun Mandal**  
-
-These two aren't just developers — they are **visual engineers** who turned lines of code into cinematic magic.
+--
