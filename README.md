@@ -41,6 +41,5 @@ It's got **style, movement, performance, and class** — all bundled into a mode
 ## 🧑‍💻 Developed By
 
 👑 **Tarun Mandal**  
-🎯 **Praveen Raghuvanshi**
 
 These two aren't just developers — they are **visual engineers** who turned lines of code into cinematic magic.
