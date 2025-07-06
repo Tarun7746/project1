@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import heroImg from "../../Assets/heroSectionImg.avif";
-
+import heroImg from "../../Assets/CoadingBgHero.jpg";
+import { Typewriter } from "react-simple-typewriter";
 export default function HeroSection() {
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
@@ -54,17 +54,27 @@ export default function HeroSection() {
           className="text-[40px] md:text-[50px] lg:text-[70px] font-semibold mb-5 leading-[50px] lg:leading-[80px] md:leading-[60px]"
           style={{ fontFamily: "var(--montserrat_font)" }}
         >
-          Bringing Stories to Life One Frame at a Time.
+          Building Fast, Modern Frontends with{" "}
+          <span className="text-purple-400">
+            <Typewriter
+              words={["React.js", "Next.js", "Tailwind ", " Bootstrap"]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={80}
+              deleteSpeed={50}
+              delaySpeed={1500}
+            />
+          </span>
         </h1>
-
         <p
           ref={paragraphRef}
           className="max-w-[78%] mx-auto text-lg md:text-xl text-gray-200 mb-8"
         >
-          High-quality commercials, corporate videos, and social media content —
-          expertly crafted to bring your ideas to life.
+          Frontend Developer with 1+ Years of Experience in React.js, Next.js,
+          and Tailwind CSS. I turn complex designs into clean, scalable, and
+          responsive interfaces.
         </p>
-
         <nav
           className="flex flex-col sm:flex-row justify-center items-center gap-4"
           aria-label="Call to actions"
@@ -72,16 +82,16 @@ export default function HeroSection() {
           <a
             ref={(el) => (buttonsRef.current[0] = el)}
             href="tel:+97145757813"
-            className="bg-[var(--primary-color)] hover:bg-[var(--primary-hover)] text-white font-bold py-3 px-6 rounded-full shadow-md transition-all duration-300"
+            className="bg-purple-400 hover:bg-purple-500 text-black font-bold py-3 px-6 rounded-full shadow-md transition-all duration-300"
           >
-            Call +971 4 575 7813
+            Download Resume
           </a>
 
           <button
             ref={(el) => (buttonsRef.current[1] = el)}
-            className="bg-white text-black font-semibold py-3 px-6 rounded-full shadow-md hover:bg-[var(--primary-hover)] hover:text-white transition-all duration-300"
+            className="bg-white text-black font-semibold py-3 px-6 rounded-full shadow-md hover:bg-purple-500 transition-all duration-300"
           >
-            Request a Callback
+            View Projects
           </button>
         </nav>
       </header>
